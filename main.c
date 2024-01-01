@@ -3,8 +3,8 @@
 
 /*
     NOME DO PROJETO: COLOR EDITOR
-    O QUE …:         FERRAMENTA DE RENDERIZA«√O DE CORES NO CONSOLE
-    OBJETIVO:        DEMONSTRAR O QUE SE … POSSÕVEL FAZER USANDO C
+    O QUE √â:         FERRAMENTA DE RENDERIZA√á√ÉO DE CORES NO CONSOLE
+    OBJETIVO:        DEMONSTRAR O QUE SE √â POSS√çVEL FAZER USANDO C
 */
 
 
@@ -13,44 +13,44 @@
 
 
 
-// FUN«’ES GLOBAIS
+// FUNÔøΩÔøΩES GLOBAIS
 
-void SetupConsole ( void );  // - ConfiguraÁ„o Inicial do Console - //
+void SetupConsole ( void );  // - Configura√ß√£o Inicial do Console - //
 
 void DrawnMenu     ( void ); // - Desenha a Interface do Menu no Console - //
 void MenuActions   ( void ); // - Controla a Interface do Menu no Console - //
 
-void DrawnStart    ( void ); // - Desenha a Interface de CriaÁ„o de Design e a ¡rea de Desenho - //
-void StartActions  ( void ); // - Controla a Interface de CriaÁ„o de Design e a ¡rea de Desenho - //
+void DrawnStart    ( void ); // - Desenha a Interface de Cria√ß√£o de Design e a √°rea de Desenho - //
+void StartActions  ( void ); // - Controla a Interface de Cria√ß√£o de Design e a √°rea de Desenho - //
 void SaveGrid      ( void ); //
 
-void DrawnLoad     ( void ); // - Desenha a Interface de SeleÁ„o de Designs - //
+void DrawnLoad     ( void ); // - Desenha a Interface de Sele√ß√£o de Designs - //
 void ListContent   ( void ); // - Printa na Interface os Designs Criados - //
-void FillGrid      ( void ); // - Preenche o GRID para Permitir a VisualizaÁ„o - //
+void FillGrid      ( void ); // - Preenche o GRID para Permitir a Visualiza√ß√£o - //
 void DrawnDesign   ( void ); // - Desenha o Design Selecionado - //
 
 void DrawnAbout    ( void ); // - Desenha a Interface de Sobre do Programa - //
-void DrawnClose    ( void ); // - Executa a ConfirmaÁ„o para Encerrar o Programas - //
+void DrawnClose    ( void ); // - Executa a Confirma√ß√£o para Encerrar o Programas - //
 
 
 
 
-// VARI¡VEIS GLOBAIS DE SUPORTE
+// VARI√ÅVEIS GLOBAIS DE SUPORTE
 
-int  kaj         = 0; /* VARI¡VEL DE CONTROLE DE LOOP - LINES */
-int  jak         = 0; /* VARI¡VEL DE CONTROLE DE LOOP - COLUMNS */
-int  PlayedAudio = 0; /* FLAG PARA CHECAR SE O A⁄DIO INICIAL FOI EXECUTADO */
-int  MenuChoice  = 0; /* DEFINE QUAL MENU SER¡ ABERTO */
-int  MenuClose   = 0; /* FLAG PARA CHECAR SE O USU¡RIO ENCERROU O PROGRAMA */
+int  kaj         = 0; /* VARI√ÅVEL DE CONTROLE DE LOOP - LINES */
+int  jak         = 0; /* VARI√ÅVEL DE CONTROLE DE LOOP - COLUMNS */
+int  PlayedAudio = 0; /* FLAG PARA CHECAR SE O A√öDIO INICIAL FOI EXECUTADO */
+int  MenuChoice  = 0; /* DEFINE QUAL MENU SER√Å ABERTO */
+int  MenuClose   = 0; /* FLAG PARA CHECAR SE O USU√ÅRIO ENCERROU O PROGRAMA */
 
-int  GRID [14] [28];  /* MATRIZ PARA DEFINIR TODO O ¬MBITO DE DESENHO */
+int  GRID [14] [28];  /* MATRIZ PARA DEFINIR TODO O √ÇMBITO DE DESENHO */
 
 
 
-// STRINGS GLOBAIS DE NOMEA«√O E SUPORTE
+// STRINGS GLOBAIS DE NOMEA√á√ÉO E SUPORTE
 
 char DesignLayout [100]; /* STRING QUE DEFINE O NOME DO DESIGN A SER SALVO */
-char DesignSet    [100]; /* STRING QUE DEFINE QUAL DESIGN SER¡ VISUALIZADO */
+char DesignSet    [100]; /* STRING QUE DEFINE QUAL DESIGN SERÔøΩ VISUALIZADO */
 char DesignCreate [100]; /* STRING QUE DEFINE O NOME DO DESIGN A SER SALVO < SUPORTE A DesignLayout > */
 char DesignName   [25];  /* STRING QUE DEFINE O ID DO DESIGN A SER VISUALIZADO */
 
@@ -61,14 +61,14 @@ char DesignName   [25];  /* STRING QUE DEFINE O ID DO DESIGN A SER VISUALIZADO *
 int
 main ( void )
 {
-       // ConfiguraÁıes Iniciais de PadronizaÁ„o do Console
+       // Configura√ß√µes Iniciais de Padroniza√ß√£o do Console
        SetupConsole ();
 
        // Iniciando o Menu Principal
        DrawnMenu ();
         MenuActions ();
 
-       // ¡rea de ExecuÁ„o do Programa
+       // √Årea de Execu√ß√£o do Programa
        if ( MenuChoice == 1 )
          DrawnStart ();
 
@@ -89,24 +89,24 @@ main ( void )
 void
 SetupConsole ( void )
 {
-    ENABLEPROPS     ();                                   // ATIVANDO OS C”DIGOS DE ESCAPE
-    PROP_HIDECURSOR ();                                   // ESCONDENDO O CURSOR ( PARA N√O FICAR PISCANDO )
+    ENABLEPROPS     ();                                   // ATIVANDO OS C√ìDIGOS DE ESCAPE
+    PROP_HIDECURSOR ();                                   // ESCONDENDO O CURSOR ( PARA N√ÉO FICAR PISCANDO )
 
     if ( PlayedAudio == 0 ) SB_PLAYSOUND ( MB_ICONSTOP ); // EXECUTANDO UM SOM NO INICIO DO PROGRAMA
 
-    // Desativando FunÁıes EspecÌficas do Console
-    CS_DISABLEMINIMIZEBUTTON ();                          // DESATIVANDO O BOT√O DE MINIMIZAR
-    CS_DISABLEMAXIMIZEBUTTON ();                          // DESATIVANDO O BOT√O DE MAXIMIZAR
+    // Desativando FunÔøΩÔøΩes EspecÔøΩficas do Console
+    CS_DISABLEMINIMIZEBUTTON ();                          // DESATIVANDO O BOTÔøΩO DE MINIMIZAR
+    CS_DISABLEMAXIMIZEBUTTON ();                          // DESATIVANDO O BOTÔøΩO DE MAXIMIZAR
     CS_DISABLERESIZE         ();                          // DESATIVANDO O RESIZE DO CONSOLE
     CS_DISABLESCROLLBAR      ();                          // DESATIVANDO A BARRA DE SCROLL DO CONSOLE
 
-    CS_SETTITLE ("Color Editor");                         // DEFININDO O TÕTULO DO CONSOLE
+    CS_SETTITLE ("Color Editor");                         // DEFININDO O TÔøΩTULO DO CONSOLE
     SYS_SETSIZE ( 60 , 22 );                              // DEFININDO O TAMANHO DO CONSOLE
 
-    MenuClose = 0;                                        // VARI¡VEL DE SUPORTE PARA A FUN«√O DrawnClose ();
-    PlayedAudio = 1;                                      // VARI¡VEL PARA CONTROLAR O SOM INICIAL
+    MenuClose = 0;                                        // VARIÔøΩVEL DE SUPORTE PARA A FUNÔøΩÔøΩO DrawnClose ();
+    PlayedAudio = 1;                                      // VARIÔøΩVEL PARA CONTROLAR O SOM INICIAL
 
-    FLEE_CREATEAFOLDER ( "DESIGNS" );                     // CRIANDO A PASTA NECESS¡RIA PARA O PROGRAMA, QUE SALVAR¡ OS DESIGNS
+    FLEE_CREATEAFOLDER ( "DESIGNS" );                     // CRIANDO A PASTA NECESSÔøΩRIA PARA O PROGRAMA, QUE SALVARÔøΩ OS DESIGNS
 
     for ( kaj = 0; kaj < 14; kaj ++ )                     // LIMPANDO O GRID
        for ( jak = 0; jak < 28; jak ++ )
@@ -122,7 +122,7 @@ DrawnMenu ( void )
 {
     /*
 
-    INFORMA«’ES INTERESSANTES:
+    INFORMAÔøΩÔøΩES INTERESSANTES:
 
     1. PROP_BACKGROUNDCOLOR -> DEFINE A COR DE FUNDO
     2. PROP_TEXTCOLOR       -> DEFINE A COR DO TEXTO
@@ -130,7 +130,7 @@ DrawnMenu ( void )
     4. PR                   -> PRINTF SIMPLIFICADO
 
     // STRUCT AQUI
-    5. gotoxy               -> DEFINE A POSI«√O DO CURSOR ( O QUE PERMITE A ESTILIZA«√O )
+    5. gotoxy               -> DEFINE A POSIÔøΩÔøΩO DO CURSOR ( O QUE PERMITE A ESTILIZAÔøΩÔøΩO )
 
     */
 
@@ -160,7 +160,7 @@ DrawnMenu ( void )
 
 
 
-    /* Bot„o de ComeÁar */
+    /* BotÔøΩo de ComeÔøΩar */
     gotoxy ( 24 , 7 ); PR_CHAR ( ' ' , 11 );
     PROP_TEXTCOLOR ( BLACK_TEXT );
     PROP_BACKGROUNDCOLOR ( BLUE_BACKGROUND );
@@ -170,7 +170,7 @@ DrawnMenu ( void )
 
 
 
-    /* Bot„o de Load */
+    /* BotÔøΩo de Load */
     gotoxy ( 24 , 10 ); PR_CHAR ( ' ' , 11 );
     PROP_TEXTCOLOR ( BLACK_TEXT );
     PROP_BACKGROUNDCOLOR ( BLUE_BACKGROUND );
@@ -180,7 +180,7 @@ DrawnMenu ( void )
 
 
 
-    /* Bot„o de Sobre */
+    /* BotÔøΩo de Sobre */
     gotoxy ( 24 , 13 ); PR_CHAR ( ' ' , 11 );
     PROP_TEXTCOLOR ( BLACK_TEXT );
     PROP_BACKGROUNDCOLOR ( BLUE_BACKGROUND );
@@ -190,7 +190,7 @@ DrawnMenu ( void )
 
 
 
-    /* Bot„o de Fechar */
+    /* BotÔøΩo de Fechar */
     gotoxy ( 24 , 16 ); PR_CHAR ( ' ' , 11 );
     PROP_TEXTCOLOR ( BLACK_TEXT );
     PROP_BACKGROUNDCOLOR ( BLUE_BACKGROUND );
@@ -201,7 +201,7 @@ DrawnMenu ( void )
 
 
 
-    /* InformaÁ„o da vers„o */
+    /* InformaÔøΩÔøΩo da versÔøΩo */
     gotoxy ( 19 , 19 );
     PR_CHAR ( 175 , 1 );
     PR (" BETA PROGRAM v 1.2 ");
@@ -223,7 +223,7 @@ DrawnMenu ( void )
 
 
 
-    /* Printando os textos dos botıes */
+    /* Printando os textos dos botÔøΩes */
     PROP_BACKGROUNDCOLOR ( CYAN_BACKGROUND );
     gotoxy ( 24 , 3 );  PR ("COLOR EDITOR");
     gotoxy ( 27 , 7 );  PR ("START");
@@ -244,7 +244,7 @@ MenuActions ( void )
 
     /*
 
-    INFORMA«’ES INTERESSANTES:
+    INFORMAÔøΩÔøΩES INTERESSANTES:
 
     1. CASE 80 -> SETA PARA CIMA
     2. CASE 72 -> SETA PARA BAIXO
@@ -256,11 +256,11 @@ MenuActions ( void )
 
 
     char control;           // char de controle
-    int  pos = MenuChoice;  // int  de posiÁ„o
+    int  pos = MenuChoice;  // int  de posiÔøΩÔøΩo
 
 
 
-    // Loop Para SeleÁ„o de Menu
+    // Loop Para SeleÔøΩÔøΩo de Menu
     while ( control not_eq 13 or MenuChoice == 0 )
     {
 
@@ -310,11 +310,11 @@ DrawnStart ( void )
 
     /*
 
-    INFORMA«’ES INTERESSANTES: CRIA«√O DE DESIGN
+    INFORMAÔøΩÔøΩES INTERESSANTES: CRIAÔøΩÔøΩO DE DESIGN
 
     1. getS             -> ENTRADA DE STRING CONTROLADA
     2. FLEE_CREATEAFILE -> CRIA UM ARQUIVO
-    3. FLEE_WRITEstring -> PRINTF DE ARQUIVOS ( PRINTA O CONTE⁄DO NA ⁄LTIMA POSI«√O DO CURSOR )
+    3. FLEE_WRITEstring -> PRINTF DE ARQUIVOS ( PRINTA O CONTEÔøΩDO NA ÔøΩLTIMA POSIÔøΩÔøΩO DO CURSOR )
 
     */
 
@@ -352,7 +352,7 @@ DrawnStart ( void )
 
 
 
-    /* Executando umas ConfirmaÁıes */
+    /* Executando umas ConfirmaÔøΩÔøΩes */
     if ( strcmp ( DesignCreate , ":q!" ) == 0 or strcmp ( DesignCreate , ":Q!" ) == 0 ) main ();
     else sprintf (  DesignLayout , "DESIGNS/%s.txt" , DesignCreate );
 
@@ -374,7 +374,7 @@ DrawnStart ( void )
 
     /*
 
-    INFORMA«’ES INTERESSANTES: DESENHO
+    INFORMAÔøΩÔøΩES INTERESSANTES: DESENHO
 
     */
 
@@ -437,7 +437,7 @@ DrawnStart ( void )
 
 
 
-    /* FunÁ„o Para Desenhar no Grid e Executar Comandos */
+    /* FunÔøΩÔøΩo Para Desenhar no Grid e Executar Comandos */
     StartActions ();
 }
 
@@ -453,7 +453,7 @@ StartActions ( void )
 
     /*
 
-    INFORMA«’ES INTERESSANTES: COMANDOS E DESENHO NO GRID
+    INFORMAÔøΩÔøΩES INTERESSANTES: COMANDOS E DESENHO NO GRID
 
     1. PROP_SHOWCURSOR   -> MOSTRA O CURSOR
     2. PROP_MOVEUP       -> MOVE O CURSOR PRA CIMA A QUANTIDADE DEFINIDA
@@ -626,7 +626,7 @@ StartActions ( void )
         gotoxy ( 38 , 20 ); PR_CHAR ( ' ' , 18 );
 
         // Recursividade
-        // Voltando ao inicÌo dessa funÁ„o
+        // Voltando ao inicÔøΩo dessa funÔøΩÔøΩo
         StartActions ();
     }
 
@@ -645,7 +645,7 @@ StartActions ( void )
         gotoxy ( 38 , 20 ); PR_CHAR ( ' ' , 18 );
 
         // Recursividade
-        // Voltando ao inicÌo dessa funÁ„o
+        // Voltando ao inicÔøΩo dessa funÔøΩÔøΩo
         StartActions ();
     }
 
@@ -716,7 +716,7 @@ DrawnLoad ( void )
 
 
 
-    /* ComparaÁıes para Saber se Ir· Retornar ao Menu */
+    /* ComparaÔøΩÔøΩes para Saber se IrÔøΩ Retornar ao Menu */
     if ( strcmp ( DesignLayout , ":q!" ) == 0 or strcmp ( DesignLayout , ":Q!" ) == 0 ) main ();
 
     sprintf ( DesignSet , "DESIGNS/%s" , DesignLayout );
@@ -733,7 +733,7 @@ DrawnLoad ( void )
 
 
 
-    /* FinalizaÁ„o do Print */
+    /* FinalizaÔøΩÔøΩo do Print */
     SYS_SETSIZE ( 40 , 20 );
     char new_title [100];
         sprintf ( new_title , "DESIGN VIEW: %s" , DesignLayout );
@@ -760,11 +760,11 @@ DrawnLoad ( void )
     gotoxy ( 15 , 1 ); PR ( DesignName );
     gotoxy ( 12 , 6 );
 
-    /* FunÁ„o que printa o GRID */
+    /* FunÔøΩÔøΩo que printa o GRID */
     DrawnDesign ();
 
 
-    /* Para Retornar ao Menu o Usu·rio Precisa Pressionar ESC */
+    /* Para Retornar ao Menu o UsuÔøΩrio Precisa Pressionar ESC */
     while ( getch () not_eq 27 ) {} main ();
 }
 
@@ -824,7 +824,7 @@ DrawnAbout ( void )
 
 
 
-    /* Printando as InformaÁıes Finais */
+    /* Printando as InformaÔøΩÔøΩes Finais */
     gotoxy ( 28 , 3 );  PR ("ABOUT");
     gotoxy ( 24 , 9 );  PR ("COLOR EDITOR");
     gotoxy ( 22 , 11 ); PR ("In-console color");
@@ -837,7 +837,7 @@ DrawnAbout ( void )
 
 
 
-    /* Esperando o Usu·rio Apertar ESC */
+    /* Esperando o UsuÔøΩrio Apertar ESC */
     while ( getch () not_eq 27 ) {} main ();
 }
 
@@ -849,7 +849,7 @@ void
 DrawnClose ( void )
 {
 
-    // ESSA FUN«√O BASICAMENTE SERVE PARA EXECUTAR UM PROMPT PARA CONFIRMAR SE O USU¡RIO
+    // ESSA FUNÔøΩÔøΩO BASICAMENTE SERVE PARA EXECUTAR UM PROMPT PARA CONFIRMAR SE O USUÔøΩRIO
     // REALMENTE QUER ENCERRAR O PROGRAMA
 
     MenuClose = SB_CREATEBOX ( "Do you want to close the application?" , "Please Confirm!" , MB_YESNO | MB_ICONQUESTION | MB_DEFBUTTON2 | MB_SYSTEMMODAL );
@@ -870,9 +870,9 @@ void
 ListContent ( void )
 {
 
-     // ESSA FUN«√O BASICAMENTE VAI LER TODO OS ARQUIVOS DA PASTA DESIGN
+     // ESSA FUNÔøΩÔøΩO BASICAMENTE VAI LER TODO OS ARQUIVOS DA PASTA DESIGN
      // E SIMPLESMENTE LISTAR NO CONSOLE TODOS OS ARQUIVOS QUE POSSUAM A
-     // TERMINA«√O .txt QUE … O PADR√O UTILIZADO PARA ARMAZENAR OS DESIGNS
+     // TERMINAÔøΩÔøΩO .txt QUE ÔøΩ O PADRÔøΩO UTILIZADO PARA ARMAZENAR OS DESIGNS
 
      DIR * dir;
      struct dirent * ent;
@@ -914,7 +914,7 @@ FillGrid ( void )
 {
      int c = 0;
 
-     // ESSA FUN«√O BASICAMENTE VAI SALVAR NA MATRIZ GRID TODAS OS PIXELS PRESENTES NO ARQUIVO
+     // ESSA FUNÔøΩÔøΩO BASICAMENTE VAI SALVAR NA MATRIZ GRID TODAS OS PIXELS PRESENTES NO ARQUIVO
      // ORGANIZANDO PARA QUE O PRINT DESSE ARQUIVO SEJA REALIZADO
 
      if ( fopen ( DesignSet , "r" ) == NULL )
