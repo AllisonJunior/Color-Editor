@@ -1,1 +1,3 @@
-# Color-Editor
+# Color Editor
+
+---
